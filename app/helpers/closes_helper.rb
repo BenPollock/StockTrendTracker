@@ -1,0 +1,2 @@
+module ClosesHelper
+end
