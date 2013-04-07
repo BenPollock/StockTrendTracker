@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  date: 2013-04-07
+  open: 1.5
+  high: 1.5
+  low: 1.5
+  close: 1.5
+  volume: 9.99
+
+two:
+  date: 2013-04-07
+  open: 1.5
+  high: 1.5
+  low: 1.5
+  close: 1.5
+  volume: 9.99
