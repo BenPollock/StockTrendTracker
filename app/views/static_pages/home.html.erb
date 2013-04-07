@@ -1,23 +1,17 @@
+<h1>Percent Analysis</h1>
+<p>Use this tool to track the next-day outcomes based upon the current end-of-day information.
+<br>Select the index, change range, and date range to use.</p>
 
-<div class="container">
-
-  <h1>Percent Analysis</h1>
-  <p>Use this tool to track the next-day outcomes based upon the current end-of-day information.
-  <br>Select the index, change range, and date range to use.</p>
-
-  <form>
-  	Index<br>
-  	<select>
-  		<option>S&P 500</option>
-  		<option>TSX</option>
-  	</select><br>
-  	Date Range<br>
-  	<i>JQuery Pickers Here</i><br><br>
-  	Price Range<br>
-  	<i>Percent Choosers Here</i><br><br>
-  	<button type="submit" class="btn btn-primary">Search</button>
-  </form>
-
-
-
-</div>
+<%= form_tag("/search", method:"get") do %>
+	Index<br>
+	<select name="index">
+		<option>S&P 500</option>
+		<option>TSX</option>
+	</select><br>
+	Date Range<br>
+	<i>JQuery Pickers Here</i><br><br>
+	Price Range<br>
+	<i>Percent Choosers Here</i><br><br>
+  <%= text_field_tag "id" %><br>
+	<button type="submit" class="btn btn-primary">Search</button>
+<% end %>
