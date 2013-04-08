@@ -1,3 +1,16 @@
+<% content_for :head do %>
+ <script>
+  $(function() {
+    $( ".datepicker" ).datepicker({
+      changeMonth: true,
+      changeYear: true,
+      dateFormat: 'dd-mm-yy'
+    });
+  });
+  </script>
+<% end %>
+
+
 <h1>Percent Analysis</h1>
 <p>Use this tool to track the next-day outcomes based upon the current end-of-day information.
 <br>Select the index, change range, and date range to use.</p>
@@ -9,9 +22,13 @@
 		<option>TSX</option>
 	</select><br>
 	Date Range<br>
-	<i>JQuery Pickers Here</i><br><br>
+	<input type="text" class="datepicker" name="start_date"><input type="text" class="datepicker" name="end_date"><br>
 	Price Range<br>
-	<i>Percent Choosers Here</i><br><br>
+	<input type="text" name="low_range"><input type="text"
+	name="high_range">
+	<br><br>
+
+	<i>For testing purposes only</i>
   <%= text_field_tag "id" %><br>
 	<button type="submit" class="btn btn-primary">Search</button>
 <% end %>

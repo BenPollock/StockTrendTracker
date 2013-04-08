@@ -4,8 +4,28 @@
 <br>
 
 <% if @cases %>
-	<%= @cases.open %>
-<%end %>
-
+	Total S&P 500 Range is: <%= @total %>
+	<br>
+	<table class="table">
+		<thead>
+			<th>Date</th>
+			<th>Open</th>
+			<th>Close</th>
+			<th>Percent</th>
+			<th>Next Day Open</th>
+			<th>Next Day Close</th>
+			<th>Next Day Percent</th>
+		</thead>
+		<% @cases.each do |case_instance| %>
+			<tr>
+				<td><%= case_instance.date %></td>
+				<td><%= case_instance.open %></td>
+				<td><%= case_instance.close %></td>
+				<td><%= (case_instance.close - case_instance.open)/(case_instance.open) %></td>
+			</tr>
+			<br>
+		<% end %>
+	</table>
+<% end %>
 
 
