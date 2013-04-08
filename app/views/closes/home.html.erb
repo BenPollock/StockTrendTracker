@@ -1,10 +1,6 @@
-<%= @index %>
-<br>
-<%= @id %>
-<br>
-
+<%= @p_end %>
 <% if @cases %>
-	Total S&P 500 Range is: <%= @total %>
+	Given the criteria, the average next-day result was <%= @total %>
 	<br>
 	<table class="table">
 		<thead>
@@ -16,16 +12,26 @@
 			<th>Next Day Close</th>
 			<th>Next Day Percent</th>
 		</thead>
+		<!-- Return list of current days -->
 		<% @cases.each do |case_instance| %>
 			<tr>
 				<td><%= case_instance.date %></td>
 				<td><%= case_instance.open %></td>
 				<td><%= case_instance.close %></td>
-				<td><%= (case_instance.close - case_instance.open)/(case_instance.open) %></td>
+				<td><%= ((case_instance.close - case_instance.open)/(case_instance.open)) * 100 %></td>
+
+				<!--Next day case stuff-->
+				<% next_case = nextDay(case_instance.id) %>
+				<td><%= next_case.open %></td>
+				<td><%= next_case.close %></td>
+				<td><%= ((next_case.close - next_case.open)/(next_case.open))*100 %></td>
+
+
 			</tr>
-			<br>
 		<% end %>
 	</table>
-<% end %>
+<% else %>
+	There was an error with your requset
+<%end%>
 
 

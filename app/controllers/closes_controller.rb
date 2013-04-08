@@ -12,12 +12,16 @@ class ClosesController < ApplicationController
     @f_start = Date.parse(@start_date)
     @f_end = Date.parse(@end_date)
 
+    @p_start = @low_range.to_f
+    @p_end = @high_range.to_f
+
     @cases_nextday = []
 
   	begin
       #Find the cases
-      @cases = Close.find(:all, conditions:["date between ? and ?",
-        @f_start, @f_end])
+      @cases = Close.find(:all, conditions:["date between ? and ? AND 
+        ((close-open)/open * 100) between ? and ?",
+        @f_start, @f_end, @p_start, @p_end])
 
       #Find the next day cases
       @cases.each do |case_instance|
@@ -26,10 +30,13 @@ class ClosesController < ApplicationController
 
       #Get the average
       @total = 0
+      @count = 0
       @cases_nextday.each do |nextday_instance|
         instance = (nextday_instance.close-nextday_instance.open)/(nextday_instance.open)
         @total = @total + instance
+        @count = @count + 1
       end
+      @total = @total/@count
 
       if(@cases.empty?)
          @cases = false
@@ -42,6 +49,7 @@ class ClosesController < ApplicationController
   	#@nextcase = Close.nextDay(@id)
 
   end
+
 
 
 
