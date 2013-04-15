@@ -1,7 +1,7 @@
-<%= @p_end %>
 <% if @cases %>
-	Given the criteria, the average next-day result was <%= @total %>
+	Given the criteria, the average next-day result was: <h1><%= @total.round(2) %>%</h1>Based on a total of <%= @count %> cases.<br>
 	<br>
+	<b>Full Results</b>
 	<table class="table">
 		<thead>
 			<th>Date</th>
@@ -18,13 +18,13 @@
 				<td><%= case_instance.date %></td>
 				<td><%= case_instance.open %></td>
 				<td><%= case_instance.close %></td>
-				<td><%= ((case_instance.close - case_instance.open)/(case_instance.open)) * 100 %></td>
+				<td><%= (((case_instance.close - case_instance.open)/(case_instance.open)) * 100).round(2) %>%</td>
 
 				<!--Next day case stuff-->
 				<% next_case = nextDay(case_instance.id) %>
 				<td><%= next_case.open %></td>
 				<td><%= next_case.close %></td>
-				<td><%= ((next_case.close - next_case.open)/(next_case.open))*100 %></td>
+				<td><%= (((next_case.close - next_case.open)/(next_case.open))*100).round(2) %>%</td>
 
 
 			</tr>

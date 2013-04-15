@@ -36,7 +36,7 @@ class ClosesController < ApplicationController
         @total = @total + instance
         @count = @count + 1
       end
-      @total = @total/@count
+      @total = (@total/@count) * 100
 
       if(@cases.empty?)
          @cases = false
