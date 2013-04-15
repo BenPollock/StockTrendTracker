@@ -19,9 +19,33 @@ class ClosesController < ApplicationController
 
   	begin
       #Find the cases
-      @cases = Close.find(:all, conditions:["date between ? and ? AND 
-        ((close-open)/open * 100) between ? and ?",
-        @f_start, @f_end, @p_start, @p_end])
+
+      #To fix bug where it doesn't work with negative start
+      #and positive end, split into separate queries
+     if @p_start < 0 && @p_end > 0
+        @hi = "ok"
+        @case1 = Close.find(:all, conditions:["date between ? and ? AND 
+          ((close-open)/open * 100) between ? and -0.1",
+          @f_start, @f_end, @p_start])
+        @case2 = Close.find(:all, conditions:["date between ? and ? AND
+          ((close-open)/open * 100) between 0.1 and ?",
+          @f_start, @f_end, @p_end])
+
+        #Combine them into the cases attribute
+        @cases = []
+        @case1.each do |item1|
+          @cases << item1
+        end
+        @case2.each do |item2|
+          @cases << item2
+        end
+        @ni = @cases.count
+        #Otherwise, do it as normal
+      else
+        @cases = Close.find(:all, conditions:["date between ? and ? AND 
+          ((close-open)/open * 100) between ? and ?",
+          @f_start, @f_end, @p_start, @p_end])
+      end
 
       #Find the next day cases
       @cases.each do |case_instance|
