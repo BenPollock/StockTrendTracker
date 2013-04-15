@@ -23,7 +23,6 @@ class ClosesController < ApplicationController
       #To fix bug where it doesn't work with negative start
       #and positive end, split into separate queries
      if @p_start < 0 && @p_end > 0
-        @hi = "ok"
         @case1 = Close.find(:all, conditions:["date between ? and ? AND 
           ((close-open)/open * 100) between ? and -0.1",
           @f_start, @f_end, @p_start])
@@ -39,7 +38,6 @@ class ClosesController < ApplicationController
         @case2.each do |item2|
           @cases << item2
         end
-        @ni = @cases.count
         #Otherwise, do it as normal
       else
         @cases = Close.find(:all, conditions:["date between ? and ? AND 
