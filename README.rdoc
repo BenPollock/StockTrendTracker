@@ -1,6 +1,6 @@
-== S&P 500 Analysis
+== Stock Trend Tracker
 
-Although most of the features of this application are up in the air, some of the features have been planned out already.
+This application aims to conglomerate several methods to track and predict trends in various indices.  It is currently in beta, with one method available.
 
 <b>Next Day Predictor</b>
 Based upon the current S&P 500 results, or upon the results of different sectors, the application will produce a listing of days within the specified value and date range.  It will also determine the trend following those days, and produce a statistic to accurately gauge future events.
