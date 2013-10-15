@@ -5,10 +5,4 @@ This application aims to conglomerate several methods to track and predict trend
 <b>Next Day Predictor</b>
 Based upon the current S&P 500 results, or upon the results of different sectors, the application will produce a listing of days within the specified value and date range.  It will also determine the trend following those days, and produce a statistic to accurately gauge future events.
 
-<i>Planned Features</i>
-<ul>
-	<li>*Removal of data points outside standard deviation</li>
-	<li>*Support for other indices, or specific markets</li>
-	<li>*HTML5 graph support</li>
-	<li>*News based on data points</li>
-</ul>
+<i>Planned Features: </i> Removal of data points outside standard deviation, Support for other indices, or specific markets, HTML5 graph support, News based on data points
